@@ -114,7 +114,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 17
     testRunner.Given("the previous build failed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 18
-    testRunner.And("a build is current in progress", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("a build is currently in progress", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 19
     testRunner.When("the light updates", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 20

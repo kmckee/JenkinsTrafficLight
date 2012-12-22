@@ -50,6 +50,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DisplaysCurrentBuildStatus.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\Steps\BuildStatusSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,9 +61,7 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Features\Steps\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
