@@ -1,11 +1,25 @@
-﻿Feature: DisplaysCurrentBuildStatus
-	In order to avoid silly mistakes
-	As a math idiot
-	I want to be told the sum of two numbers
+﻿Feature: Display Current Build Status
 
-@mytag
-Scenario: Add two numbers
-	Given I have entered 50 into the calculator
-	And I have entered 70 into the calculator
-	When I press add
-	Then the result should be 120 on the screen
+@pending
+Scenario: Current build is successful
+	Given the current build is successful
+	When the light updates
+	Then the "green" light should be on
+
+@pending
+Scenario: Current build is broken
+	Given the current build failed
+	When the light updates
+	Then the "red" light should be on
+
+@pending
+Scenario: Broken and building
+    Given the previous build failed
+    And a build is current in progress
+    When the light updates
+    Then the "yellow" light should be on
+
+@pending
+Scenario: Unable to retrieve current build status
+    When an error occurs retrieving the build status
+    Then the "yellow" light should be blinking quickly
