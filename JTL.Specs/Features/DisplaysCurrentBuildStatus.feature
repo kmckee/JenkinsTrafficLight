@@ -14,8 +14,7 @@ Scenario: Current build is broken
 
 @pending
 Scenario: Broken and building
-    Given the previous build failed
-    And a build is currently in progress
+    Given the previous build failed and a build is currently in progress
     When the light updates
     Then the "yellow" light should be on
 
