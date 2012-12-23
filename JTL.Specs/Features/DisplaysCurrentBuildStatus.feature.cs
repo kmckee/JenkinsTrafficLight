@@ -66,18 +66,14 @@ namespace JTL.Specs.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Current build is successful")]
-        [NUnit.Framework.CategoryAttribute("pending")]
         public virtual void CurrentBuildIsSuccessful()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Current build is successful", new string[] {
-                        "pending"});
-#line 4
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Current build is successful", ((string[])(null)));
+#line 3
 this.ScenarioSetup(scenarioInfo);
+#line 4
+ testRunner.When("the current build is successful", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 5
- testRunner.Given("the current build is successful", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 6
- testRunner.When("the light updates", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 7
  testRunner.Then("the \"green\" light should be on", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -90,13 +86,11 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Current build is broken", new string[] {
                         "pending"});
-#line 10
+#line 8
 this.ScenarioSetup(scenarioInfo);
-#line 11
- testRunner.Given("the current build failed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 12
- testRunner.When("the light updates", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 13
+#line 9
+ testRunner.When("the current build failed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 10
  testRunner.Then("the \"red\" light should be on", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -109,13 +103,13 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Broken and building", new string[] {
                         "pending"});
-#line 16
+#line 13
 this.ScenarioSetup(scenarioInfo);
-#line 17
-    testRunner.Given("the previous build failed and a build is currently in progress", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 18
-    testRunner.When("the light updates", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 19
+#line 14
+    testRunner.Given("the last build failed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 15
+    testRunner.When("a build is currently in progress", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 16
     testRunner.Then("the \"yellow\" light should be on", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -128,12 +122,12 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Unable to retrieve current build status", new string[] {
                         "pending"});
-#line 22
+#line 19
 this.ScenarioSetup(scenarioInfo);
-#line 23
+#line 20
     testRunner.When("an error occurs retrieving the build status", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 24
-    testRunner.Then("the \"yellow\" light should be blinking quickly", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 21
+    testRunner.Then("the \"yellow\" light should be blinking", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
