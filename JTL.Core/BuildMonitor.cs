@@ -9,12 +9,9 @@ namespace JTL.Core
     {
         public BuildMonitor(IJenkinsRssFeed feed)
         {
-        
+            CurrentBuildStatus = feed.Read().Contains("ActiveMQ Protocol Buffer") ? BuildStatus.Broken : BuildStatus.Success;
         }
 
-        public object CurrentBuildStatus
-        {
-            get { return BuildStatus.Success; }
-        }
+        public BuildStatus CurrentBuildStatus { get; private set; }
     }
 }

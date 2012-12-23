@@ -81,11 +81,11 @@ this.ScenarioSetup(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Current build is broken")]
-        [NUnit.Framework.CategoryAttribute("pending")]
+        [NUnit.Framework.IgnoreAttribute()]
         public virtual void CurrentBuildIsBroken()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Current build is broken", new string[] {
-                        "pending"});
+                        "ignore"});
 #line 8
 this.ScenarioSetup(scenarioInfo);
 #line 9
@@ -98,11 +98,11 @@ this.ScenarioSetup(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Broken and building")]
-        [NUnit.Framework.CategoryAttribute("pending")]
+        [NUnit.Framework.IgnoreAttribute()]
         public virtual void BrokenAndBuilding()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Broken and building", new string[] {
-                        "pending"});
+                        "ignore"});
 #line 13
 this.ScenarioSetup(scenarioInfo);
 #line 14
@@ -117,11 +117,11 @@ this.ScenarioSetup(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Unable to retrieve current build status")]
-        [NUnit.Framework.CategoryAttribute("pending")]
+        [NUnit.Framework.IgnoreAttribute()]
         public virtual void UnableToRetrieveCurrentBuildStatus()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Unable to retrieve current build status", new string[] {
-                        "pending"});
+                        "ignore"});
 #line 19
 this.ScenarioSetup(scenarioInfo);
 #line 20

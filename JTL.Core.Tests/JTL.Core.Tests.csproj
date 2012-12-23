@@ -48,7 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuildMonitorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RssSamples.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JTL.Core\JTL.Core.csproj">

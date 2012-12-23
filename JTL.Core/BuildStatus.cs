@@ -8,8 +8,9 @@ namespace JTL.Core
 {
     public enum BuildStatus
     {
+        Unknown,
         Success,
-        BrokenAndBuilding,
-        Broken
+        Broken,
+        BrokenAndBuilding
     }
 }

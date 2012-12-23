@@ -13,11 +13,6 @@ namespace JTL.Core
 
     public class JenkinsRssFeed : IJenkinsRssFeed
     {
-        public JenkinsRssFeed(string url)
-        {
-        
-        }
-
         public string Read()
         {
             throw new NotImplementedException();
