@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,8 +42,12 @@
   <ItemGroup>
     <Compile Include="BuildMonitor.cs" />
     <Compile Include="BuildStatus.cs" />
-    <Compile Include="JenkinsFeedReader.cs" />
+    <Compile Include="IUsbPort.cs" />
+    <Compile Include="JenkinsRssFeed.cs" />
+    <Compile Include="Light.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TrafficLightController.cs" />
+    <Compile Include="UsbPort.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

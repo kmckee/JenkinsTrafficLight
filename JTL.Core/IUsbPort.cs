@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace JTL.Core
 {
-    public enum BuildStatus
+    public interface IUsbPort
     {
-        Unknown,
-        Stable,
-        Broken,
-        TestFailures
+        void Write(string textToWrite);
     }
 }

@@ -4,7 +4,7 @@ Scenario: Current build is successful
 	When the current build is successful
 	Then the "green" light should be on
 
-@ignore
+
 Scenario: Current build is broken
 	When the current build failed
 	Then the "red" light should be on

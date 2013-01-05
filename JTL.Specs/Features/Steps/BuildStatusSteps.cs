@@ -55,7 +55,7 @@ namespace JTL.Specs.Features.Steps
             switch (lightColor.ToLower())
             {
                 case "green":
-                    expectedStatus = BuildStatus.Success;
+                    expectedStatus = BuildStatus.Stable;
                     break;
                 case "yellow":
                     expectedStatus = BuildStatus.BrokenAndBuilding;

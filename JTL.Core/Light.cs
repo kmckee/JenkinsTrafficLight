@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace JTL.Core
 {
-    public enum BuildStatus
+    public enum Light
     {
-        Unknown,
-        Stable,
-        Broken,
-        TestFailures
+        Red,
+        Yellow,
+        Green,
+        All
     }
 }

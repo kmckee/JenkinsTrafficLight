@@ -81,11 +81,9 @@ this.ScenarioSetup(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Current build is broken")]
-        [NUnit.Framework.IgnoreAttribute()]
         public virtual void CurrentBuildIsBroken()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Current build is broken", new string[] {
-                        "ignore"});
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Current build is broken", ((string[])(null)));
 #line 8
 this.ScenarioSetup(scenarioInfo);
 #line 9

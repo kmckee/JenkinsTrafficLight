@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace JTL.Core
 {
-    public enum BuildStatus
+    public class UsbPort : IUsbPort
     {
-        Unknown,
-        Stable,
-        Broken,
-        TestFailures
+        public void Write(string textToWrite)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
