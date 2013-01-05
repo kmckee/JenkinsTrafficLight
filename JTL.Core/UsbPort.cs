@@ -1,16 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO.Ports;
 
 namespace JTL.Core
 {
-    public class UsbPort : IUsbPort
+    public class UsbPort : IUsbPort, IDisposable
     {
+        private readonly SerialPort _port;
+
+        public UsbPort(string portName)
+        {
+            _port = new SerialPort(portName, 9600);
+            _port.Open();
+        }
+
         public void Write(string textToWrite)
         {
-            throw new NotImplementedException();
+            if (!_port.IsOpen)
+                _port.Open();
+
+            _port.Write(textToWrite);
+        }
+
+        public void Dispose()
+        {
+            if (_port.IsOpen)
+                _port.Close();
         }
     }
 }
