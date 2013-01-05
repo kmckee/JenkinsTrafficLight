@@ -32,7 +32,7 @@ namespace JTL.Core.Tests
 
             var monitor = new BuildMonitor(rssFeedMock);
 
-            monitor.CurrentBuildStatus.Should().Be(expectedStatus);
+            monitor.GetCurrentBuildStatus().Should().Be(expectedStatus);
         }
     }
 }

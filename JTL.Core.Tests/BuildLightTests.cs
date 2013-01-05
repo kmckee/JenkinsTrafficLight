@@ -17,7 +17,7 @@ namespace JTL.Core.Tests
             var lightController = Substitute.For<ITrafficLightController>();
             var light = new BuildLight(lightController);
 
-            light.Off();
+            light.TurnOffAllLights();
 
             lightController.Received(1).TurnOff(Light.All);
         }

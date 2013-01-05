@@ -15,7 +15,7 @@ namespace JTL.Core
             _lightController = lightController;
         }
 
-        public void Off()
+        public void TurnOffAllLights()
         {
             _lightController.TurnOff(Light.All);
         }

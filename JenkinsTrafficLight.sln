@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JTL.Core", "JTL.Core\JTL.Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JTL.Core.Tests", "JTL.Core.Tests\JTL.Core.Tests.csproj", "{1D0E3311-5B8B-43E9-BBD7-F4BB8B75C28A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JTL.Console", "JTL.Console\JTL.Console.csproj", "{F6193039-BC6E-42EC-9ED1-4D3028F256E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{1D0E3311-5B8B-43E9-BBD7-F4BB8B75C28A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D0E3311-5B8B-43E9-BBD7-F4BB8B75C28A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D0E3311-5B8B-43E9-BBD7-F4BB8B75C28A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6193039-BC6E-42EC-9ED1-4D3028F256E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6193039-BC6E-42EC-9ED1-4D3028F256E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6193039-BC6E-42EC-9ED1-4D3028F256E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6193039-BC6E-42EC-9ED1-4D3028F256E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
