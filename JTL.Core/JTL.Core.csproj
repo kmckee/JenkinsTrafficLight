@@ -40,9 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuildLight.cs" />
     <Compile Include="BuildMonitor.cs" />
     <Compile Include="BuildStatus.cs" />
-    <Compile Include="IUsbPort.cs" />
     <Compile Include="JenkinsRssFeed.cs" />
     <Compile Include="Light.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

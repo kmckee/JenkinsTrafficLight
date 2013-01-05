@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace JTL.Core
 {
-    public class TrafficLightController
+    public interface ITrafficLightController
+    {
+        void TurnOn(Light lightToTurnOn);
+        void TurnOff(Light lightToTurnOff);
+    }
+
+    public class TrafficLightController : ITrafficLightController
     {
         private IUsbPort _port;
 

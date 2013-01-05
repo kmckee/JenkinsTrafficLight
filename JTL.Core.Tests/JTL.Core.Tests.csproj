@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BuildMonitorTests.cs" />
+    <Compile Include="BuildLightTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="JenkinsRssFeedTests.cs" />
     <Compile Include="RssSamples.cs" />

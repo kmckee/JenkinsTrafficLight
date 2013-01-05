@@ -9,7 +9,7 @@ namespace JTL.Core
     public enum BuildStatus
     {
         Unknown,
-        Stable,
+        Successful,
         Broken,
         TestFailures
     }

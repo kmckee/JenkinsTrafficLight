@@ -3,6 +3,11 @@ using System.IO.Ports;
 
 namespace JTL.Core
 {
+    public interface IUsbPort
+    {
+        void Write(string textToWrite);
+    }
+
     public class UsbPort : IUsbPort, IDisposable
     {
         private readonly SerialPort _port;

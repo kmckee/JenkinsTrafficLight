@@ -10,7 +10,12 @@ using System.Xml.Linq;
 
 namespace JTL.Core
 {
-    public class BuildMonitor
+    public interface IBuildMonitor
+    {
+        BuildStatus CurrentBuildStatus { get; }
+    }
+
+    public class BuildMonitor : IBuildMonitor
     {
         private readonly IJenkinsRssFeed _feed;
         public BuildMonitor(IJenkinsRssFeed feed)
@@ -35,7 +40,7 @@ namespace JTL.Core
                 else if (latestBuildTitle.Contains("(broken"))
                     CurrentBuildStatus = BuildStatus.Broken;
                 else if (latestBuildTitle.Contains("(stable)") || latestBuildTitle.Contains("(back to normal)"))
-                    CurrentBuildStatus = BuildStatus.Stable;
+                    CurrentBuildStatus = BuildStatus.Successful;
                 else if (latestBuildTitle.Contains("fail"))
                     CurrentBuildStatus = BuildStatus.TestFailures;
             }
