@@ -1,4 +1,4 @@
 JenkinsTrafficLight
 ===================
 
-Netduino + Traffic Light + Jenkins
+Teensyduino + Traffic Light + Jenkins
