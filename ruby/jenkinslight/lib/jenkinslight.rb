@@ -1,5 +1,5 @@
 require "jenkinslight/version"
 
-module Jenkinslight
+module JenkinsLight
   # Your code goes here...
 end

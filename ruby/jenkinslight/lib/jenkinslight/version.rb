@@ -1,3 +1,3 @@
-module Jenkinslight
+module JenkinsLight
   VERSION = "0.0.1"
 end

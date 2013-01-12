@@ -1,0 +1,13 @@
+watch('spec/.*_spec.rb') do |md|
+  clear_console  
+  system "rspec -c"
+end
+
+watch('lib/(.*).rb') do |md| 
+  clear_console
+  system "rspec -c"
+end
+
+def clear_console
+  puts "\e[H\e[2J"  #clear console
+end
