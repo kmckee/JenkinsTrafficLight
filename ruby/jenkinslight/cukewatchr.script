@@ -1,0 +1,18 @@
+watch('features/(.*).feature') do |md|
+  clear_console  
+  system "cucumber -c"
+end
+
+watch('lib/(.*).rb') do |md| 
+  clear_console
+  system "cucumber -c"
+end
+
+watch('features/(.*).rb') do |md| 
+  clear_console
+  system "cucumber -c"
+end
+
+def clear_console
+  puts "\e[H\e[2J"  #clear console
+end

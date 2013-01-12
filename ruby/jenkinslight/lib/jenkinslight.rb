@@ -1,5 +1,6 @@
-require "jenkinslight/version"
+require_relative "jenkinslight/version"
+require_relative "jenkinslight/monitor"
 
 module JenkinsLight
-  # Your code goes here...
+
 end
