@@ -14,12 +14,10 @@ Feature: Build status is displayed
     When the last build succeeded but one or more tests failed
     Then I should see "hh:mm:ss/tBuild Status: Red/tFailing Tests"
 
-  @ignore
   Scenario: Build failed
     Given I am monitoring a build
-    And a build is not currently in process
-    When the last build failed
-    Then I should see "hh:mm:ss/tBuild Status: Red/tBuild Failed"
+    When the last build failed and a build is not currently in progress
+    Then I should see a message with current time and "Build Status: Red/tBuild failed"
 
   @ignore
   Scenario: Last build failed, new build in progress

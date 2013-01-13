@@ -25,6 +25,10 @@ When /^the last build succeeded and all tests passed$/ do
   @monitor.update
 end
 
+When /^the last build failed and a build is not currently in progress$/ do
+  @monitor.url = "http://fakeurl.com/job/LastBuildFailed"
+  @monitor.update
+end
 
 
 class Output 
