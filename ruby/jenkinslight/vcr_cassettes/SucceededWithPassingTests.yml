@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://fakeurl.com/job/SucceededWithPassingTests/api/json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*; q=0.5, application/xml'
+      accept-encoding:
+      - gzip, deflate
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Sun, 13 Jan 2013 20:22:56 GMT
+      server:
+      - Apache-Coyote/1.1
+      x-jenkins:
+      - '1.498'
+      x-jenkins-session:
+      - 67d09612
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json;charset=UTF-8
+      content-length:
+      - '992'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAALWZ227bOBCGX4UQ9tKOE6BAHd3l0HQTtE43StGLRS4oamzT
+        pUUtD9t6i7x7h6SVeO20JVUJMGxHJP/5/iE1pJxvGWWGy1pn+d/fHkft62GU
+        VaCZ4o1rzPLsrKFsCeSsrEBRcq9s/TnDPlw3gm5mdA2uj28cm8PGWzWzQmR5
+        je+jrH6xu1XYIVsa0+h8MiktF5U+oj7skVSLyUqWk90hExzje9FSoBxeg+0F
+        7yWr7boEleUnx6enHdTdsEmGudgVmnYTmh4Ive4m9BqFcGqYFBJ1slJYwCzM
+        udLm3AlkeV9RRtkSqDDLO2ikMj6h/18Q96ANuQNthcnJMTH4pyZzygWvF0Ra
+        Q+ScUGKkocJ9fXV6EvocITBnsv4YwHyQ8fS4EVYfNfUCWzWTChz/sUtaRFRe
+        hzi/J+0TSLShJXowm5zMJFHAoDYkpM27gyopCk4Wr/+ygPOUz6nQuEQ/AzSX
+        0EBdQc046KcGQV+exd9ZvV70Qq4bAQaqQdSvfFa20uEGd5cL4+7LQSIWljHQ
+        em7FIPIfa73L/mwJG/YjbwsafA0zN2sxcO5HWaNkA8psfGnFlfCPWwfXBtbt
+        OFxFzCqFS2wrt10JlfyCDAro+oOSK2DGVbQHt7BwKNbnzDYvNa9lZQVsq1+o
+        sei2NU694Tx8dKm3B1p/hA9XiPcq0t6+sLt3hEr4c7oxrWhjQOlxQ112+qTd
+        1/41fdjyzrbDovhLW1cCesUOkrG05743uaEqipcJ3neag2Qs70UAiGJ1xbVX
+        UhSM5nTB4ygtW1Zlz6Bec5cVIV2pqn7Mi0Muz9vVG4UOX6nbL3Sv7K1obKLf
+        tBBxxAZq7U6x4zlQY1Xv8Af68T7aoWRMrlq4RFOLippeS/aBeCc7by8dVqoX
+        kIM5AdnNByIluliatRjKhtPu5OPP+/fvUo2sNB5+BzLitDsZuSluZ6lG1pQP
+        ZsRpdzLy3kGlGoGKD3aze/FuVjxWohdJrVkO5cWLd/Jye+awUr3gI5sGqthw
+        hp4idHOFw4sAmGhtgFP2gXq6pVQXSg+266N0pym5K4pUFxoUp4L/h4e1gcw8
+        R+jkqXgGTLW2pIr7X0iG8RXku5naoiU6+qJ1v88ie9qdvHwqijdRRuYcD9gb
+        7X6Q6NPDs2ws/tXTiKQHFX4y7XfLd4K/ZL4+mc7IO14qXDGRR/kV6/dmRr3Y
+        1N5c3CXldFWVrF9WFIyGvTy/SKLFrUX3XCiDZCzxhwAQw6qBWcXNplfaVjSW
+        t2gh4ojVvz1nN0jG03qAKNam960lSEaz+t7kujawUNT/T+Hx4fE7dAEe018b
+        AAA=
+    http_version: '1.1'
+  recorded_at: Sun, 13 Jan 2013 20:22:57 GMT
+recorded_with: VCR 2.4.0

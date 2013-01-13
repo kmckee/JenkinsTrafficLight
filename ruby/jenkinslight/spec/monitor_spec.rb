@@ -27,9 +27,21 @@ module JenkinsLight
       it "should output a status message if the last build was successful with passing tests" do
         output.should_receive(:puts).with(/[0-9]+:[0-9]+(:[0-9]+)?\/tBuild Status: Green/)
         
-        monitor.url = "http://fakeurl.com/job/SucceededWithPassingTests"
-        monitor.update
+        VCR.use_cassette('SucceededWithPassingTests') do
+          monitor.url = "http://fakeurl.com/job/SucceededWithPassingTests"
+          monitor.update
+        end
       end
+      
+      it "should output a status message if the last build failed" do
+        output.should_receive(:puts).with(/[0-9]+:[0-9]+(:[0-9]+)?\/tBuild Status: Red(.*)/)
+        
+        VCR.use_cassette('LastBuildFailed') do
+          monitor.url = "http://fakeurl.com/job/LastBuildFailed"
+          monitor.update
+        end
+      end
+
     end
   end
 end

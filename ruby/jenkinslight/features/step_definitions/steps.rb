@@ -1,3 +1,5 @@
+require 'VCR'
+
 Given /^I am not yet monitoring a build$/ do
 end
 
@@ -21,13 +23,17 @@ Given /^I am monitoring a build$/ do
 end
 
 When /^the last build succeeded and all tests passed$/ do
-  @monitor.url = "http://fakeurl.com/job/SucceededWithPassingTests"
-  @monitor.update
+  VCR.use_cassette "SucceededWithPassingTests" do
+    @monitor.url = "http://fakeurl.com/job/SucceededWithPassingTests"
+    @monitor.update
+  end
 end
 
 When /^the last build failed and a build is not currently in progress$/ do
-  @monitor.url = "http://fakeurl.com/job/LastBuildFailed"
-  @monitor.update
+  VCR.use_cassette "LastBuildFailed" do
+    @monitor.url = "http://fakeurl.com/job/LastBuildFailed"
+    @monitor.update
+  end
 end
 
 

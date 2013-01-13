@@ -1,3 +1,5 @@
 require 'rspec'
+require 'vcr'
+require 'fakeweb'
 require_relative '../lib/jenkinslight.rb'
-##require File.expand_path('../../lib/jenkinslight.rb', __FILE__)
+require_relative 'vcr_setup'
