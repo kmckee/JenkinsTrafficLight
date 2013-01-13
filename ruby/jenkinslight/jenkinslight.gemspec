@@ -5,7 +5,7 @@ require 'jenkinslight/version'
 
 Gem::Specification.new do |gem|
   gem.name          = "jenkinslight"
-  gem.version       = Jenkinslight::VERSION
+  gem.version       = JenkinsLight::VERSION
   gem.authors       = ["Kyle McKee"]
   gem.email         = ["mckee.kyle@gmail.com"]
   gem.description   = %q{This gem can be used with a teensy microcontroller to connect a traffic light to a jenkins CI server. }
@@ -16,6 +16,11 @@ Gem::Specification.new do |gem|
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
+ 
+  gem.add_dependency 'httparty'
   
   gem.add_development_dependency 'rake'
+  gem.add_development_dependency 'webmock'
+  gem.add_development_dependency 'vcr'
 end
+

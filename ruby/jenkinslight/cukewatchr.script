@@ -1,16 +1,16 @@
 watch('features/(.*).feature') do |md|
   clear_console  
-  system "cucumber -c"
+  system "cucumber -c --tags ~@ignore"
 end
 
 watch('lib/(.*).rb') do |md| 
   clear_console
-  system "cucumber -c"
+  system "cucumber -c --tags ~@ignore"
 end
 
 watch('features/(.*).rb') do |md| 
   clear_console
-  system "cucumber -c"
+  system "cucumber -c --tags ~@ignore"
 end
 
 def clear_console
