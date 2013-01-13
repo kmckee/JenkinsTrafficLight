@@ -6,8 +6,8 @@ module JenkinsLight
     end
 
     def start
-#      output.puts "Jenkins Build Light Monitor Started"
-#      output.puts "Enter the URL of the Jenkins job to monitor:"
+      @output.puts "Jenkins Build Light Monitor Started"
+      @output.puts "Enter the URL of the Jenkins job to monitor:"
     end
   end
 
