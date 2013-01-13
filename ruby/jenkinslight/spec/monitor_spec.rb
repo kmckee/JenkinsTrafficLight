@@ -30,7 +30,6 @@ module JenkinsLight
         monitor.url = "http://fakeurl.com/job/SucceededWithPassingTests"
         monitor.update
       end
-      it "should output an error message if the url is invalid"
     end
   end
 end
