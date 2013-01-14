@@ -19,7 +19,8 @@ module JenkinsLight
         'red' => {:status => 'Red', :details => 'Build failed'},
         'disabled' => {:status => 'Unknown', :details => 'Jenkins is suspended'},
         'yellow' => {:status => 'Red', :details => 'Failing tests'},
-        'red_anime' => {:status => 'Yellow', :details => 'Broken and building...'}
+        'red_anime' => {:status => 'Yellow', :details => 'Broken and building...'},
+        'error' => {:status => 'Unknown', :details => 'Error contacting Jenkins (404)'}
       }[get_current_jenkins_color]
       
       write_status_message(color_details[:status], color_details[:details])
@@ -39,7 +40,11 @@ module JenkinsLight
     end
 
     def get_current_jenkins_color
-      JSON.parse(RestClient.get(api_url))['color']
+      begin
+        JSON.parse(RestClient.get(api_url))['color']
+      rescue => e
+        'error'
+      end
     end
   end
 

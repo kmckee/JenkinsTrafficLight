@@ -28,9 +28,8 @@ Feature: Build status is displayed
     When the jenkins job is disabled
     Then I should see a message with current time and "Build Status: Unknown/tJenkins is suspended"
 
-  @ignore
   Scenario: Unable to connect to Jenkins
     Given I am monitoring a build
     When it's not possible to contact Jenkins for a status
-    Then I should see "hh:mm:ss/tBuild Status: Unknown/tError contacting Jenkins."
+    Then I should see a message with current time and "Build Status: Unknown/tError contacting Jenkins"
     

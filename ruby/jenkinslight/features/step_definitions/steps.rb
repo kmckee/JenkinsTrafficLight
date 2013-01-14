@@ -57,6 +57,13 @@ When /^a build is currently in process and the last build failed$/ do
   end
 end
 
+When /^it's not possible to contact Jenkins for a status$/ do
+  VCR.use_cassette "404NotFound" do
+    @monitor.url = "http://fakeurl.com/job/404NotFound"
+    @monitor.update
+  end
+end
+
 class Output 
   def messages
       @messages ||= []

@@ -69,6 +69,14 @@ module JenkinsLight
         end
       end
 
+      it "should output an error message if the server returns a 404" do
+        output.should_receive(:puts).with(/[0-9]+:[0-9]+(:[0-9]+)?\/tBuild Status: Unknown\/tError contacting Jenkins \(404\)/)
+        
+        VCR.use_cassette('404NotFound') do
+          monitor.url = "http://fakeurl.com/job/404NotFound"
+          monitor.update
+        end
+      end
     end
   end
 end
