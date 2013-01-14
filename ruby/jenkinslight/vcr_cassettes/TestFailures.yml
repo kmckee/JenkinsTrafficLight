@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://fakeurl.com/job/TestFailures/api/json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*; q=0.5, application/xml'
+      accept-encoding:
+      - gzip, deflate
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Mon, 14 Jan 2013 03:00:41 GMT
+      server:
+      - Apache-Coyote/1.1
+      x-jenkins:
+      - '1.498'
+      x-jenkins-session:
+      - 67d09612
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json;charset=UTF-8
+      content-length:
+      - '628'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAALWVbWvbMBDHv4oQDDZw4jy3MfTF1jLYxtKtW9iLkReyfUmU
+        KpKmh7Wh9Lvv5DyweC50bgzG2JLud3/dnXQPlGWOK2lp8vPhMdo/s4jmYDPD
+        dZikCaU4wK0WbDNha8CBt9K13nku8tZn5gy/P15wbSZeCJpIfEdUPmniDS6i
+        S+e0TeI4DZO2zTTLltBWZhGvVBqXzWK0K1ayVCDWGQ+7gWITVPp1CoYmw/6w
+        pgO0jCmG4S/UoDZqUEb1a6P6ZVSvNqpXRnVro7plVKc2qlNC9cZ1Ub3xMWow
+        rht2tEQUHohMCYUkugEh1B0W4Zwb64q1NDmdp4gugQm3vAGtjCsq+vgofgfr
+        yA1YL1xCBn3i8N+SOeOCywVR3hE1J4w45ZgIn91BdN4dbJe1UTbPlJxu9RWO
+        WucdLbxta7nAWZspg6dqPA7RO3ZciCXWsRRduU1CJooYyEA6st1hIQLyZzvp
+        djohsFx+9eDxf86ExbN8C6CvQIPMQWYc7GFCsIp4v/iYF9hLtdYCHOQN8d8X
+        kdnBt7diGP7mwiXWQA0VcJ9lYO3ci4Y2NZW2Wv/J8E3uQML9tpomB+Qootoo
+        DcZtin6IxfkrlOYHB+t92rCwM28MVv1O0644c3WH4TDA1l+MWkHmQjeahVpH
+        U2yq1Ouq6dB+f8OlknO+8IYdevG+aa7y24uPV59Itz0krwULp/hNJFgK4mKa
+        eul83S7ajnfoV70OwvFdiQ/dtnTzFfdqWd2oSXWj56hLBd4hldrOmtR29tLI
+        /ZPXH1xiMdnGErvj187sSfVVpLZC33/k9qTqKpL7pLrZ4x9F62aMTQsAAA==
+    http_version: '1.1'
+  recorded_at: Mon, 14 Jan 2013 03:00:41 GMT
+recorded_with: VCR 2.4.0

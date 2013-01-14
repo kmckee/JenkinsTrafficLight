@@ -8,11 +8,10 @@ Feature: Build status is displayed
     When the last build succeeded and all tests passed
     Then I should see a message with current time and "Build Status: Green"
 
-  @ignore
   Scenario: Build succeeded with test failures
     Given I am monitoring a build
     When the last build succeeded but one or more tests failed
-    Then I should see "hh:mm:ss/tBuild Status: Red/tFailing Tests"
+    Then I should see a message with current time and "Build Status: Red/tFailing tests"
 
   Scenario: Build failed
     Given I am monitoring a build
@@ -30,7 +29,6 @@ Feature: Build status is displayed
     Given I am monitoring a build
     When the jenkins job is disabled
     Then I should see a message with current time and "Build Status: Unknown/tJenkins is suspended"
-
 
   @ignore
   Scenario: Unable to connect to Jenkins

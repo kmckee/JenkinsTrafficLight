@@ -51,6 +51,15 @@ module JenkinsLight
         end
       end
 
+      it "should output a status message if the tests failed" do
+        output.should_receive(:puts).with(/[0-9]+:[0-9]+(:[0-9]+)?\/tBuild Status: Red\/tFailing tests/)
+        
+        VCR.use_cassette('TestFailures') do
+          monitor.url = "http://fakeurl.com/job/TestFailures"
+          monitor.update
+        end
+      end
+
     end
   end
 end

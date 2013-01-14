@@ -43,6 +43,13 @@ When /^the jenkins job is disabled$/ do
   end
 end
 
+When /^the last build succeeded but one or more tests failed$/ do
+  VCR.use_cassette "TestFailures" do
+    @monitor.url = "http://fakeurl.com/job/TestFailures"
+    @monitor.update
+  end
+end
+
 class Output 
   def messages
       @messages ||= []
