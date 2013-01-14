@@ -36,6 +36,12 @@ When /^the last build failed and a build is not currently in progress$/ do
   end
 end
 
+When /^the jenkins job is disabled$/ do
+  VCR.use_cassette "BuildDisabled" do
+    @monitor.url = "http://fakeurl.com/job/BuildDisabled"
+    @monitor.update
+  end
+end
 
 class Output 
   def messages

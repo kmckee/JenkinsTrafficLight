@@ -26,11 +26,11 @@ Feature: Build status is displayed
     When a build is currently in process
     Then I should see "hh:mm:ss/tBuild Status: Yellow/tBuild failed, currently building"
 
-  @ignore
-  Scenario: Jenkins job is suspended
+  Scenario: Jenkins job is disabled
     Given I am monitoring a build
     When the jenkins job is disabled
-    Then I should see "hh:mm:ss/tBuild Status: Unknown/tJenkins is suspended"
+    Then I should see a message with current time and "Build Status: Unknown/tJenkins is suspended"
+
 
   @ignore
   Scenario: Unable to connect to Jenkins

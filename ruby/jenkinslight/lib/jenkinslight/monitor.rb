@@ -17,11 +17,13 @@ module JenkinsLight
       build_details = JSON.parse(RestClient.get(api_url))
 
       color = build_details['color']
-
+      
       if color == 'blue'
-        @output.puts(Time.new.strftime("%H:%M:%S") + "/tBuild Status: Green")
+        write_status_message('Green', '')
       elsif color == 'red'
-        @output.puts(Time.new.strftime("%H:%M:%S") + "/tBuild Status: Red/tBuild failed")
+        write_status_message('Red', 'Build failed')
+      elsif color == 'disabled'
+        write_status_message('Unknown', 'Jenkins is suspended')
       end
     end
 
@@ -32,6 +34,12 @@ module JenkinsLight
     def api_url
       @url + "/api/json"
     end
+
+    def write_status_message(status, details)
+        time = Time.new.strftime("%H:%M:%S") 
+        @output.puts("#{time}/tBuild Status: #{status}/t#{details}")
+    end
+
   end
 
 end
