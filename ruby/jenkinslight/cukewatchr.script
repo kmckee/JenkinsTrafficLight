@@ -1,18 +1,5 @@
-watch('features/(.*).feature') do |md|
+watch('(lib|features)/(.*).(feature|rb)') do |md|
   system "clear"
   system "cucumber -c --tags ~@ignore --format progress"
 end
 
-watch('lib/(.*).rb') do |md| 
-  system "clear"
-  system "cucumber -c --tags ~@ignore --format progress"
-end
-
-watch('features/(.*).rb') do |md| 
-  system "clear"
-  system "cucumber -c --tags ~@ignore --format progress"
-end
-
-def clear_console
-  puts "\e[H\e[2J"  #clear console
-end
