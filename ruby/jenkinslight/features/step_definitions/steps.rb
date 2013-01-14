@@ -13,7 +13,7 @@ Then /^I should see "(.*?)"$/ do |message|
 end
 
 Then /^I should see a message with current time and "(.*?)"$/ do |message|
-  regex = Regexp.new(Regexp.new("[0-9]+:[0-9]+(:[0-9]+)?\/t" + message), "i")
+  regex = Regexp.new(Regexp.new("[0-9]+:[0-9]+(:[0-9]+)?\/t" + message))
   output.messages.to_s.should =~ regex
 end
 
