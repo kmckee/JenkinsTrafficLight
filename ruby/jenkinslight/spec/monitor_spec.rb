@@ -60,6 +60,15 @@ module JenkinsLight
         end
       end
 
+      it "should output a status message if the last build failed and a build is current in progress" do
+        output.should_receive(:puts).with(/[0-9]+:[0-9]+(:[0-9]+)?\/tBuild Status: Yellow\/tBroken and building.../)
+        
+        VCR.use_cassette('BrokenAndBuilding') do
+          monitor.url = "http://fakeurl.com/job/BrokenAndBuilding"
+          monitor.update
+        end
+      end
+
     end
   end
 end

@@ -18,8 +18,9 @@ module JenkinsLight
         'blue' => {:status => 'Green', :details => ''},
         'red' => {:status => 'Red', :details => 'Build failed'},
         'disabled' => {:status => 'Unknown', :details => 'Jenkins is suspended'},
-        'yellow' => {:status => 'Red', :details => 'Failing tests'}
-      }[get_current_jenkins_color]      
+        'yellow' => {:status => 'Red', :details => 'Failing tests'},
+        'red_anime' => {:status => 'Yellow', :details => 'Broken and building...'}
+      }[get_current_jenkins_color]
       
       write_status_message(color_details[:status], color_details[:details])
     end

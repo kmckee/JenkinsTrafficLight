@@ -18,12 +18,10 @@ Feature: Build status is displayed
     When the last build failed and a build is not currently in progress
     Then I should see a message with current time and "Build Status: Red/tBuild failed"
 
-  @ignore
   Scenario: Last build failed, new build in progress
     Given I am monitoring a build
-    And the last build failed
-    When a build is currently in process
-    Then I should see "hh:mm:ss/tBuild Status: Yellow/tBuild failed, currently building"
+    When a build is currently in process and the last build failed
+    Then I should see a message with current time and "Build Status: Yellow/tBroken and building..."
 
   Scenario: Jenkins job is disabled
     Given I am monitoring a build

@@ -50,6 +50,13 @@ When /^the last build succeeded but one or more tests failed$/ do
   end
 end
 
+When /^a build is currently in process and the last build failed$/ do
+  VCR.use_cassette "BrokenAndBuilding" do
+    @monitor.url = "http://fakeurl.com/job/BrokenAndBuilding"
+    @monitor.update
+  end
+end
+
 class Output 
   def messages
       @messages ||= []
