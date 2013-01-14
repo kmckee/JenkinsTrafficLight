@@ -14,17 +14,13 @@ module JenkinsLight
     end
 
     def update
-      build_details = JSON.parse(RestClient.get(api_url))
-
-      color = build_details['color']
+      color_details = {
+        'blue' => {:status => 'Green', :details => ''},
+        'red' => {:status => 'Red', :details => 'Build failed'},
+        'disabled' => {:status => 'Unknown', :details => 'Jenkins is suspended'}
+      }[get_current_jenkins_color]      
       
-      if color == 'blue'
-        write_status_message('Green', '')
-      elsif color == 'red'
-        write_status_message('Red', 'Build failed')
-      elsif color == 'disabled'
-        write_status_message('Unknown', 'Jenkins is suspended')
-      end
+      write_status_message(color_details[:status], color_details[:details])
     end
 
     attr_accessor :url
@@ -40,6 +36,9 @@ module JenkinsLight
         @output.puts("#{time}/tBuild Status: #{status}/t#{details}")
     end
 
+    def get_current_jenkins_color
+      JSON.parse(RestClient.get(api_url))['color']
+    end
   end
 
 end
