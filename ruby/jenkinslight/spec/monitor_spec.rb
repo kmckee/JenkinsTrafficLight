@@ -126,7 +126,17 @@ module JenkinsLight
 
         monitor.username.should == 'User'
       end
-    end
+      
+      it "should get the password" do
+        output.stub(:gets).and_return('User', 'Password')
 
+        VCR.use_cassette('Authentication') do
+          monitor.url = "http://fakeurl.com/job/Authentication"
+          monitor.update
+        end
+
+        monitor.password.should == 'Password'
+      end
+    end
   end
 end
