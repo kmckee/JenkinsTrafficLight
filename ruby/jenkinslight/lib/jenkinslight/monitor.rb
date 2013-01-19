@@ -14,19 +14,9 @@ module JenkinsLight
     end
 
     def update
-      jenkins_status = get_jenkins_status
+      status_details = get_jenkins_status
       
-      status_details = {
-        'blue' => {:status => 'Green', :details => ''},
-        'red' => {:status => 'Red', :details => 'Build failed'},
-        'disabled' => {:status => 'Unknown', :details => 'Jenkins is suspended'},
-        'yellow' => {:status => 'Red', :details => 'Failing tests'},
-        'red_anime' => {:status => 'Yellow', :details => 'Broken and building...'},
-        'error' => {:status => 'Unknown', :details => 'Error contacting Jenkins (404)'},
-        'auth' => {:status => 'Unknown', :details => 'Authentication Required (403)'}
-      }[jenkins_status]
-
-      request_credentials if  jenkins_status == 'auth'
+      request_credentials if status_details[:code] == :auth
 
       write_status_message(status_details[:status], status_details[:details])
     end
@@ -49,13 +39,23 @@ module JenkinsLight
     end
 
     def get_jenkins_status
+      
       begin
-        JSON.parse(RestClient.get(api_url))['color']
+        status = JSON.parse(RestClient.get(api_url))['color']
       rescue RestClient::Forbidden 
-        'auth'
+        status = 'auth'
       rescue
-        'error'
+        status = 'error'
       end
+
+      { 'blue' => {:status => 'Green', :details => ''},
+        'red' => {:status => 'Red', :details => 'Build failed'},
+        'disabled' => {:status => 'Unknown', :details => 'Jenkins is suspended'},
+        'yellow' => {:status => 'Red', :details => 'Failing tests'},
+        'red_anime' => {:status => 'Yellow', :details => 'Broken and building...'},
+        'error' => {:status => 'Unknown', :details => 'Error contacting Jenkins (404)'},
+        'auth' => {:status => 'Unknown', :details => 'Authentication Required (403)', :code => :auth}
+      }[status]
     end
   end
 
