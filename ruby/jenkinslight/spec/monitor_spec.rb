@@ -77,6 +77,36 @@ module JenkinsLight
           monitor.update
         end
       end
+
+
+      it "should output an error message if the server required authentication" do
+        output.should_receive(:puts).with(/[0-9]+:[0-9]+(:[0-9]+)?\/tBuild Status: Unknown\/tAuthentication Required \(403\)/)
+        
+        VCR.use_cassette('Authentication') do
+          monitor.url = "http://fakeurl.com/job/Authentication"
+          monitor.update
+        end
+      end
+
+      it "should request a username if one is needed" do
+        output.should_receive(:puts).with("Username:")
+        
+        VCR.use_cassette('Authentication') do
+          monitor.url = "http://fakeurl.com/job/Authentication"
+          monitor.update
+        end
+      end
+
+      it "should not request a username if authentication isn't required" do
+        output.should_not_receive(:puts).with("Username:")
+        
+        VCR.use_cassette('SucceededWithPassingTests') do
+          monitor.url = "http://fakeurl.com/job/SucceededWithPassingTests"
+          monitor.update
+        end
+      end
+
+    
     end
   end
 end

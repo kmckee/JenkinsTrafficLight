@@ -4,15 +4,15 @@ Given /^I am not yet monitoring a build$/ do
 end
 
 When /^I start the JenkinsLight monitor$/ do
-  monitor = JenkinsLight::Monitor.new(output)
-  monitor.start
+  @monitor = JenkinsLight::Monitor.new(output)
+  @monitor.start
 end
 
 Then /^I should see "(.*?)"$/ do |message|
   output.messages.should include(message)
 end
 
-Then /^I should see a message with current time and "(.*?)"$/ do |message|
+Then /^I should see a message with the current time and "(.*?)"$/ do |message|
   regex = Regexp.new(Regexp.new("[0-9]+:[0-9]+(:[0-9]+)?\/t" + message))
   output.messages.to_s.should =~ regex
 end
@@ -64,7 +64,25 @@ When /^it's not possible to contact Jenkins for a status$/ do
   end
 end
 
+When /^I monitor a build that requires basic authentication$/ do
+  @monitor = JenkinsLight::Monitor.new(output)
+  @monitor.start
+  
+  VCR.use_cassette "Authentication" do
+    @monitor.url = "http://fakeurl.com/job/Authentication"
+    @monitor.update
+  end
+end
+
+Then /^I should be prompted to enter a user name$/ do
+  @output.messages.should include("Username:")
+end
+  
+  
+
+
 class Output 
+  
   def messages
       @messages ||= []
   end

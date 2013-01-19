@@ -1,0 +1,41 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://fakeurl.com/job/Authentication/api/json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Server:
+      - Winstone Servlet Engine v0.9.10
+      Content-Type:
+      - text/html;charset=UTF-8
+      Content-Length:
+      - '629'
+      Connection:
+      - Keep-Alive
+      Date:
+      - Fri, 18 Jan 2013 02:26:53 GMT
+      X-Powered-By:
+      - Servlet/2.5 (Winstone/0.9.10)
+      Set-Cookie:
+      - JSESSIONID.eac21b35=2bdfb1eb7bede58910b1358f5b052ce4; Path=/; HttpOnly
+    body:
+      encoding: US-ASCII
+      string: ! '<html><head><meta http-equiv=''refresh'' content=''1;url=/login?from=%2Fjob%2FJenkinsTrafficLight%2Fapi%2Fjson%2Fapi%2Fjson''/><script>window.location.replace(''/login?from=%2Fjob%2FJenkinsTrafficLight%2Fapi%2Fjson%2Fapi%2Fjson'');</script></head><body
+        style=''background-color:white; color:white;''>Authentication required</body></html>                                                                                                                                                                                                                                                                                                            '
+    http_version: 
+  recorded_at: Fri, 18 Jan 2013 02:26:52 GMT
+recorded_with: VCR 2.4.0

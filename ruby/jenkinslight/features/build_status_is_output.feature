@@ -6,30 +6,30 @@ Feature: Build status is displayed
   Scenario: Build succeeded and all tests pass
     Given I am monitoring a build
     When the last build succeeded and all tests passed
-    Then I should see a message with current time and "Build Status: Green"
+    Then I should see a message with the current time and "Build Status: Green"
 
   Scenario: Build succeeded with test failures
     Given I am monitoring a build
     When the last build succeeded but one or more tests failed
-    Then I should see a message with current time and "Build Status: Red/tFailing tests"
+    Then I should see a message with the current time and "Build Status: Red/tFailing tests"
 
   Scenario: Build failed
     Given I am monitoring a build
     When the last build failed and a build is not currently in progress
-    Then I should see a message with current time and "Build Status: Red/tBuild failed"
+    Then I should see a message with the current time and "Build Status: Red/tBuild failed"
 
   Scenario: Last build failed, new build in progress
     Given I am monitoring a build
     When a build is currently in process and the last build failed
-    Then I should see a message with current time and "Build Status: Yellow/tBroken and building..."
+    Then I should see a message with the current time and "Build Status: Yellow/tBroken and building..."
 
   Scenario: Jenkins job is disabled
     Given I am monitoring a build
     When the jenkins job is disabled
-    Then I should see a message with current time and "Build Status: Unknown/tJenkins is suspended"
+    Then I should see a message with the current time and "Build Status: Unknown/tJenkins is suspended"
 
   Scenario: Unable to connect to Jenkins
     Given I am monitoring a build
     When it's not possible to contact Jenkins for a status
-    Then I should see a message with current time and "Build Status: Unknown/tError contacting Jenkins"
+    Then I should see a message with the current time and "Build Status: Unknown/tError contacting Jenkins"
     
