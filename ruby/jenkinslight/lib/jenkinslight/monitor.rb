@@ -14,9 +14,9 @@ module JenkinsLight
     end
 
     def update
-      jenkins_status = get_current_jenkins_color
+      jenkins_status = get_jenkins_status
       
-      color_details = {
+      status_details = {
         'blue' => {:status => 'Green', :details => ''},
         'red' => {:status => 'Red', :details => 'Build failed'},
         'disabled' => {:status => 'Unknown', :details => 'Jenkins is suspended'},
@@ -26,12 +26,13 @@ module JenkinsLight
         'auth' => {:status => 'Unknown', :details => 'Authentication Required (403)'}
       }[jenkins_status]
 
-      if  jenkins_status == 'auth'
+      request_credentials if  jenkins_status == 'auth'
+
+      write_status_message(status_details[:status], status_details[:details])
+    end
+
+    def request_credentials
       @output.puts 'Username:' 
-      end
-
-      write_status_message(color_details[:status], color_details[:details])
-
     end
 
     attr_accessor :url
@@ -47,7 +48,7 @@ module JenkinsLight
         @output.puts("#{time}/tBuild Status: #{status}/t#{details}")
     end
 
-    def get_current_jenkins_color
+    def get_jenkins_status
       begin
         JSON.parse(RestClient.get(api_url))['color']
       rescue RestClient::Forbidden 
