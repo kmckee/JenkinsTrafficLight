@@ -91,6 +91,10 @@ class Output
   def puts(message)
       messages << message
   end 
+
+  def gets
+    ''
+  end
 end
 
 def output

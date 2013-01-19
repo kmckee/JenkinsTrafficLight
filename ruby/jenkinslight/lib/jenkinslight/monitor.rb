@@ -20,9 +20,11 @@ module JenkinsLight
 
       write_status_message(status_details[:status], status_details[:details])
     end
-
+    
+    attr_accessor :username
     def request_credentials
       @output.puts 'Username:' 
+      @username = @output.gets
       @output.puts 'Password:'
     end
 

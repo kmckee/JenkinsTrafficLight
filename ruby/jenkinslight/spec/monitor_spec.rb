@@ -78,7 +78,6 @@ module JenkinsLight
         end
       end
 
-
       it "should output an error message if the server required authentication" do
         output.should_receive(:puts).with(/[0-9]+:[0-9]+(:[0-9]+)?\/tBuild Status: Unknown\/tAuthentication Required \(403\)/)
         
@@ -114,8 +113,20 @@ module JenkinsLight
           monitor.update
         end
       end
-
-    
     end
+
+    describe "#request_credentials" do
+      it "should get the username" do
+        output.stub(:gets).and_return('User', 'Password')
+
+        VCR.use_cassette('Authentication') do
+          monitor.url = "http://fakeurl.com/job/Authentication"
+          monitor.update
+        end
+
+        monitor.username.should == 'User'
+      end
+    end
+
   end
 end
