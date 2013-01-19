@@ -78,7 +78,9 @@ Then /^I should be prompted to enter a user name$/ do
   @output.messages.should include("Username:")
 end
   
-  
+Then /^I should be prompted to enter a password$/ do
+  @output.messages.should include("Password:")
+end
 
 
 class Output 

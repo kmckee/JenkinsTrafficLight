@@ -106,6 +106,15 @@ module JenkinsLight
         end
       end
 
+      it "should request a password if one is needed" do
+        output.should_receive(:puts).with("Password:")
+        
+        VCR.use_cassette('Authentication') do
+          monitor.url = "http://fakeurl.com/job/Authentication"
+          monitor.update
+        end
+      end
+
     
     end
   end

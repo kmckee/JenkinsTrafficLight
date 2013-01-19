@@ -23,6 +23,7 @@ module JenkinsLight
 
     def request_credentials
       @output.puts 'Username:' 
+      @output.puts 'Password:'
     end
 
     attr_accessor :url
