@@ -2,14 +2,10 @@ require 'json'
 require 'restclient'
 
 module JenkinsLight
-
   class JenkinsFeed
+   
     def initialize url
       @url = url
-    end
-
-    def api_url
-      @url + "/api/json"
     end
     
     def get_status
@@ -30,5 +26,12 @@ module JenkinsLight
         'auth' => {:status => 'Unknown', :details => 'Authentication Required (403)', :code => :auth}
       }[status]
     end
+
+    private
+
+    def api_url
+      @url + "/api/json"
+    end
+
   end
 end
