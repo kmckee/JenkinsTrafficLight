@@ -1,5 +1,9 @@
+require 'json'
+require 'restclient'
+
 module JenkinsLight
-  class Jenkins
+
+  class JenkinsFeed
     def initialize url
       @url = url
     end
@@ -8,7 +12,7 @@ module JenkinsLight
       @url + "/api/json"
     end
     
-    def get_jenkins_status
+    def get_status
       begin
         status = JSON.parse(RestClient.get(api_url))['color']
       rescue RestClient::Forbidden 

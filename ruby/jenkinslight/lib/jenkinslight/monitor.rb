@@ -1,6 +1,3 @@
-require 'json'
-require 'rest-client'
-
 module JenkinsLight
 
   class Monitor
@@ -16,9 +13,7 @@ module JenkinsLight
     end
 
     def update
-      jenkins = Jenkins.new url
-
-      status_details = jenkins.get_jenkins_status
+      status_details = jenkins_feed.get_status
       request_credentials if status_details[:code] == :auth
       
       write_status_message(status_details[:status], status_details[:details])
@@ -37,6 +32,10 @@ module JenkinsLight
     def write_status_message(status, details)
         time = Time.new.strftime("%H:%M:%S") 
         @output.puts("#{time}/tBuild Status: #{status}/t#{details}")
+    end
+
+    def jenkins_feed
+      @jenkins_feed ||= JenkinsFeed.new url
     end
   end
 end
