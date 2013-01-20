@@ -16,7 +16,7 @@ module JenkinsLight
     end
 
     def update
-      jenkins = JenkinsLight::Jenkins.new url
+      jenkins = Jenkins.new url
 
       status_details = jenkins.get_jenkins_status
       request_credentials if status_details[:code] == :auth
