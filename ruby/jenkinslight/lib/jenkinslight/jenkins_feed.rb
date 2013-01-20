@@ -3,7 +3,7 @@ require 'restclient'
 
 module JenkinsLight
   class JenkinsFeed
-   
+    attr_accessor :url
     def initialize url
       @url = url
     end
