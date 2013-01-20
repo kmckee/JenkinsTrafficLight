@@ -80,6 +80,12 @@ module JenkinsLight
         output.should_receive(:puts).with("Password:")
         update_monitor 'Authentication'
       end
+      
+      it "should get the url" do
+        output.stub(:gets).and_return('http://fakeurl.com')
+        monitor.start
+        monitor.url.should == 'http://fakeurl.com'
+      end
     end
 
     describe "#request_credentials" do

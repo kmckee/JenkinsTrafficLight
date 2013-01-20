@@ -10,6 +10,7 @@ module JenkinsLight
     def start
       @output.puts "Jenkins Build Light Monitor Started"
       @output.puts "Enter the URL of the Jenkins job to monitor:"
+      @url = @output.gets
     end
 
     def update
@@ -35,7 +36,7 @@ module JenkinsLight
     end
 
     def jenkins_feed
-      @jenkins_feed ||= JenkinsFeed.new url
+      @jenkins_feed ||= JenkinsFeed.new @url
     end
   end
 end
