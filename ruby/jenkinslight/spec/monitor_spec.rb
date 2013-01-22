@@ -31,41 +31,11 @@ module JenkinsLight
     end
 
     describe "#update" do
-      it "outputs a status message if the last build was successful with passing tests" do
+      it "outputs a status message based on build status" do
         output.should_receive(:puts).with(/[0-9]+:[0-9]+(:[0-9]+)?\/tBuild Status: Green/)
         update_monitor 'SucceededWithPassingTests' 
       end
       
-      it "outputs a status message if the last build failed" do
-        output.should_receive(:puts).with(/[0-9]+:[0-9]+(:[0-9]+)?\/tBuild Status: Red\/tBuild failed/)
-        update_monitor 'LastBuildFailed'  
-      end
-
-      it "outputs a status message if the job is disabled" do
-        output.should_receive(:puts).with(/[0-9]+:[0-9]+(:[0-9]+)?\/tBuild Status: Unknown\/tJenkins is suspended/)
-        update_monitor 'BuildDisabled'  
-      end
-
-      it "outputs a status message if the tests failed" do
-        output.should_receive(:puts).with(/[0-9]+:[0-9]+(:[0-9]+)?\/tBuild Status: Red\/tFailing tests/)
-        update_monitor 'TestFailures'  
-      end
-
-      it "outputs a status message if the last build failed and a build is current in progress" do
-        output.should_receive(:puts).with(/[0-9]+:[0-9]+(:[0-9]+)?\/tBuild Status: Yellow\/tBroken and building.../)
-        update_monitor 'BrokenAndBuilding'  
-      end
-
-      it "outputs an error message if the server returns a 404" do
-        output.should_receive(:puts).with(/[0-9]+:[0-9]+(:[0-9]+)?\/tBuild Status: Unknown\/tError contacting Jenkins \(404\)/)
-        update_monitor '404NotFound'
-      end
-
-      it "outputs an error message if the server required authentication" do
-        output.should_receive(:puts).with(/[0-9]+:[0-9]+(:[0-9]+)?\/tBuild Status: Unknown\/tAuthentication Required \(403\)/)
-        update_monitor 'Authentication'
-      end
-
       it "requests a username if one is needed" do
         output.should_receive(:puts).with("Username:")
         update_monitor 'Authentication'

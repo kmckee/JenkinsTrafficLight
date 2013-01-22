@@ -82,6 +82,12 @@ Then /^I should be prompted to enter a password$/ do
   @output.messages.should include("Password:")
 end
 
+When /^a build is currently in process and the last build had test failures$/ do
+  VCR.use_cassette "TestsFailedAndBuilding" do
+    @monitor.url = "http://fakeurl.com/job/TestsFailedAndBuilding"
+    @monitor.update
+  end
+end
 
 class Output 
   

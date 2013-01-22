@@ -23,6 +23,11 @@ Feature: Build status is displayed
     When a build is currently in process and the last build failed
     Then I should see a message with the current time and "Build Status: Yellow/tBroken and building..."
 
+  Scenario: Last build had test failures, new build in progress
+    Given I am monitoring a build
+    When a build is currently in process and the last build had test failures
+    Then I should see a message with the current time and "Build Status: Yellow/tTest failure\(s\) on previous build, rebuilding..."
+  
   Scenario: Jenkins job is disabled
     Given I am monitoring a build
     When the jenkins job is disabled
