@@ -50,32 +50,20 @@ When /^the jenkins job is disabled$/ do
 end
 
 When /^the last build succeeded but one or more tests failed$/ do
-  VCR.use_cassette "TestFailures" do
-    @monitor.url = "http://fakeurl.com/job/TestFailures"
-    @monitor.update
-  end
+  update_monitor_using "TestFailures"
 end
 
 When /^a build is currently in process and the last build failed$/ do
-  VCR.use_cassette "BrokenAndBuilding" do
-    @monitor.url = "http://fakeurl.com/job/BrokenAndBuilding"
-    @monitor.update
-  end
+  update_monitor_using "BrokenAndBuilding" 
 end
 
 When /^it's not possible to contact Jenkins for a status$/ do
-  VCR.use_cassette "404NotFound" do
-    @monitor.url = "http://fakeurl.com/job/404NotFound"
-    @monitor.update
-  end
+  update_monitor_using "404NotFound"
 end
 
 When /^I monitor a build that requires basic authentication$/ do
   start_the_monitor 
-  VCR.use_cassette "Authentication" do
-    @monitor.url = "http://fakeurl.com/job/Authentication"
-    @monitor.update
-  end
+  update_monitor_using "Authentication" 
 end
 
 Then /^I should be prompted to enter a user name$/ do
@@ -87,10 +75,7 @@ Then /^I should be prompted to enter a password$/ do
 end
 
 When /^a build is currently in process and the last build had test failures$/ do
-  VCR.use_cassette "TestsFailedAndBuilding" do
-    @monitor.url = "http://fakeurl.com/job/TestsFailedAndBuilding"
-    @monitor.update
-  end
+  update_monitor_using "TestsFailedAndBuilding" 
 end
 
 Given /^the build is currently Green$/ do
@@ -116,7 +101,7 @@ end
 
 def update_monitor_using cassette_name
   VCR.use_cassette cassette_name do
-    @monitor.url = "http://fakeurl.com/job#{cassette_name}"
+    @monitor.url = "http://fakeurl.com/job/#{cassette_name}"
     @monitor.update
   end
 end
