@@ -72,7 +72,6 @@ end
 
 When /^I monitor a build that requires basic authentication$/ do
   start_the_monitor 
-
   VCR.use_cassette "Authentication" do
     @monitor.url = "http://fakeurl.com/job/Authentication"
     @monitor.update
@@ -96,10 +95,7 @@ end
 
 Given /^the build is currently Green$/ do
   start_the_monitor
-  VCR.use_cassette "SucceededWithPassingTests" do
-    @monitor.url = "http://fakeurl.com/job/SucceededWithPassingTests"
-    @monitor.update
-  end
+  update_monitor_using "SucceededWithPassingTests"
 end
 
 When /^I look at the traffic light$/ do
@@ -116,6 +112,13 @@ end
 def start_the_monitor
   @monitor = JenkinsLight::Monitor.new(output)
   @monitor.start
+end
+
+def update_monitor_using cassette_name
+  VCR.use_cassette cassette_name do
+    @monitor.url = "http://fakeurl.com/job#{cassette_name}"
+    @monitor.update
+  end
 end
 
 def output
