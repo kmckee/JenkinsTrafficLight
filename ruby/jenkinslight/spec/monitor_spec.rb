@@ -3,7 +3,8 @@ require_relative 'spec_helper'
 module JenkinsLight
   describe Monitor do
     let(:output) { double('output').as_null_object }
-    let(:monitor) { Monitor.new(output) }
+    let(:usb) { double('usb').as_null_object }
+    let(:monitor) { Monitor.new(output, usb) }
    
     def update_monitor status
       VCR.use_cassette(status) do

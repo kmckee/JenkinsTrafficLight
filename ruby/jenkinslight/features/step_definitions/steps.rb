@@ -1,11 +1,5 @@
 require 'VCR'
-
-RED_ON = "1"
-YELLOW_ON = "2"
-GREEN_ON = "3"
-RED_OFF = "5"
-YELLOW_OFF = "6"
-GREEN_OFF = "7"
+require 'rspec'
 
 Given /^I am not yet monitoring a build$/ do
 end
@@ -78,14 +72,13 @@ When /^I look at the traffic light$/ do
 end
 
 Then /^only the green light should be on$/ do
-  pending 'refactor'
-  usb.messages.should include("5")
-  usb.messages.should include("6")
-  usb.messages.should include("3")
+  usb.off_messages.should include(:red)
+  usb.off_messages.should include(:yellow)
+  usb.on_messages.should include(:green)
 end
 
 def start_the_monitor
-  @monitor = JenkinsLight::Monitor.new(output)
+  @monitor = JenkinsLight::Monitor.new(output, usb)
   @monitor.start
 end
 
@@ -101,25 +94,32 @@ def output
 end
 
 class Output 
-  
   def messages
       @messages ||= []
   end
   def puts(message)
       messages << message
   end 
-
   def gets
     ''
   end
 end
 
 def usb
-  @usb ||= Usb.new
+  @usb ||= UsbAdapter.new 
 end
 
-class Usb
-  def messages
-    @messages ||= []
+class UsbAdapter
+  def on_messages
+    @on ||= []
+  end
+  def off_messages
+    @off ||=[]
+  end
+  def turn_on color
+    on_messages << color
+  end
+  def turn_off color
+    off_messages << color
   end
 end

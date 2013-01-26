@@ -3,8 +3,8 @@ module JenkinsLight
   class Monitor
     attr_accessor :url, :username, :password
     
-    def initialize output
-      @output = output 
+    def initialize output, usb
+      @output = output
     end
 
     def start
