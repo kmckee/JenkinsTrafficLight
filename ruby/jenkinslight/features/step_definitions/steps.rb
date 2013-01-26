@@ -10,7 +10,6 @@ GREEN_OFF = "7"
 Given /^I am not yet monitoring a build$/ do
 end
 
-
 When /^I start the JenkinsLight monitor$/ do
   start_the_monitor
 end
@@ -29,24 +28,15 @@ Given /^I am monitoring a build$/ do
 end
 
 When /^the last build succeeded and all tests passed$/ do
-  VCR.use_cassette "SucceededWithPassingTests" do
-    @monitor.url = "http://fakeurl.com/job/SucceededWithPassingTests"
-    @monitor.update
-  end
+  update_monitor_using "SucceededWithPassingTests" 
 end
 
 When /^the last build failed and a build is not currently in progress$/ do
-  VCR.use_cassette "LastBuildFailed" do
-    @monitor.url = "http://fakeurl.com/job/LastBuildFailed"
-    @monitor.update
-  end
+  update_monitor_using "LastBuildFailed"
 end
 
 When /^the jenkins job is disabled$/ do
-  VCR.use_cassette "BuildDisabled" do
-    @monitor.url = "http://fakeurl.com/job/BuildDisabled"
-    @monitor.update
-  end
+  update_monitor_using "BuildDisabled" 
 end
 
 When /^the last build succeeded but one or more tests failed$/ do
