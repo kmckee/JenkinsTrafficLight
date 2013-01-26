@@ -3,7 +3,6 @@ Feature: Traffic light updates based on status
   I want to always know the current build status
   So that I can keep it green
   
-  @ignore
   Scenario: Display green when the build is healthy 
     Given the build is currently Green
     When I look at the traffic light
