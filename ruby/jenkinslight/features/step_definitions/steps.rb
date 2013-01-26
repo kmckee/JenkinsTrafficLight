@@ -10,9 +10,9 @@ GREEN_OFF = "7"
 Given /^I am not yet monitoring a build$/ do
 end
 
+
 When /^I start the JenkinsLight monitor$/ do
-  @monitor = JenkinsLight::Monitor.new(output)
-  @monitor.start
+  start_the_monitor
 end
 
 Then /^I should see "(.*?)"$/ do |message|
@@ -25,8 +25,7 @@ Then /^I should see a message with the current time and "(.*?)"$/ do |message|
 end
 
 Given /^I am monitoring a build$/ do
-  @monitor = JenkinsLight::Monitor.new(output)
-  @monitor.start
+  start_the_monitor
 end
 
 When /^the last build succeeded and all tests passed$/ do
@@ -72,9 +71,8 @@ When /^it's not possible to contact Jenkins for a status$/ do
 end
 
 When /^I monitor a build that requires basic authentication$/ do
-  @monitor = JenkinsLight::Monitor.new(output)
-  @monitor.start
-  
+  start_the_monitor 
+
   VCR.use_cassette "Authentication" do
     @monitor.url = "http://fakeurl.com/job/Authentication"
     @monitor.update
@@ -97,9 +95,7 @@ When /^a build is currently in process and the last build had test failures$/ do
 end
 
 Given /^the build is currently Green$/ do
-  @monitor = JenkinsLight::Monitor.new(output)
-  @monitor.start
-
+  start_the_monitor
   VCR.use_cassette "SucceededWithPassingTests" do
     @monitor.url = "http://fakeurl.com/job/SucceededWithPassingTests"
     @monitor.update
@@ -117,6 +113,10 @@ Then /^only the green light should be on$/ do
   usb.messages.should include("3")
 end
 
+def start_the_monitor
+  @monitor = JenkinsLight::Monitor.new(output)
+  @monitor.start
+end
 
 def output
   @output ||= Output.new
