@@ -1,5 +1,12 @@
 require 'VCR'
 
+RED_ON = "1"
+YELLOW_ON = "2"
+GREEN_ON = "3"
+RED_OFF = "5"
+YELLOW_OFF = "6"
+GREEN_OFF = "7"
+
 Given /^I am not yet monitoring a build$/ do
 end
 
@@ -89,6 +96,32 @@ When /^a build is currently in process and the last build had test failures$/ do
   end
 end
 
+Given /^the build is currently Green$/ do
+  @monitor = JenkinsLight::Monitor.new(output)
+  @monitor.start
+
+  VCR.use_cassette "SucceededWithPassingTests" do
+    @monitor.url = "http://fakeurl.com/job/SucceededWithPassingTests"
+    @monitor.update
+  end
+end
+
+When /^I look at the traffic light$/ do
+
+end
+
+Then /^only the green light should be on$/ do
+  pending 'refactor'
+  usb.messages.should include("5")
+  usb.messages.should include("6")
+  usb.messages.should include("3")
+end
+
+
+def output
+  @output ||= Output.new
+end
+
 class Output 
   
   def messages
@@ -103,6 +136,12 @@ class Output
   end
 end
 
-def output
-  @output ||= Output.new
+def usb
+  @usb ||= Usb.new
+end
+
+class Usb
+  def messages
+    @messages ||= []
+  end
 end
