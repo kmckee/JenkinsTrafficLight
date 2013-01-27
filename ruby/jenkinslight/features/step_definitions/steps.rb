@@ -72,13 +72,11 @@ When /^I look at the traffic light$/ do
 end
 
 Then /^only the green light should be on$/ do
-  usb.off_messages.should include(:red)
-  usb.off_messages.should include(:yellow)
-  usb.on_messages.should include(:green)
+  traffic_light.colors_turned_on.should include("Green")
 end
 
 def start_the_monitor
-  @monitor = JenkinsLight::Monitor.new(output, usb)
+  @monitor = JenkinsLight::Monitor.new(output, traffic_light)
   @monitor.start
 end
 
@@ -86,6 +84,19 @@ def update_monitor_using cassette_name
   VCR.use_cassette cassette_name do
     @monitor.url = "http://fakeurl.com/job/#{cassette_name}"
     @monitor.update
+  end
+end
+
+def traffic_light
+  @traffic_light ||= Light.new 
+end
+
+class Light
+  def colors_turned_on
+    @colors_turned_on ||= [] 
+  end
+  def turn_on_single_light color
+    colors_turned_on << color
   end
 end
 
@@ -102,24 +113,5 @@ class Output
   end 
   def gets
     ''
-  end
-end
-
-def usb
-  @usb ||= UsbAdapter.new 
-end
-
-class UsbAdapter
-  def on_messages
-    @on ||= []
-  end
-  def off_messages
-    @off ||=[]
-  end
-  def turn_on color
-    on_messages << color
-  end
-  def turn_off color
-    off_messages << color
   end
 end

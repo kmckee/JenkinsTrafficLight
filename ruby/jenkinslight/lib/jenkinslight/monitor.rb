@@ -3,8 +3,9 @@ module JenkinsLight
   class Monitor
     attr_accessor :url, :username, :password
     
-    def initialize output, usb
+    def initialize output, traffic_light
       @output = output
+      @traffic_light = traffic_light
     end
 
     def start
@@ -18,6 +19,7 @@ module JenkinsLight
       request_credentials if status_details[:code] == :auth
       
       write_status_message(status_details[:status], status_details[:details])
+      @traffic_light.turn_on_single_light(status_details[:status])      
     end
     
     def request_credentials

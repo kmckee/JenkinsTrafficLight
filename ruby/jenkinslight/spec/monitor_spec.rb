@@ -3,8 +3,8 @@ require_relative 'spec_helper'
 module JenkinsLight
   describe Monitor do
     let(:output) { double('output').as_null_object }
-    let(:usb) { double('usb').as_null_object }
-    let(:monitor) { Monitor.new(output, usb) }
+    let(:traffic_light) { double('traffic_light').as_null_object }
+    let(:monitor) { Monitor.new(output, traffic_light) }
    
     def update_monitor status
       VCR.use_cassette(status) do
@@ -56,6 +56,11 @@ module JenkinsLight
         output.stub(:gets).and_return('http://fakeurl.com')
         monitor.start
         monitor.url.should == 'http://fakeurl.com'
+      end
+
+      it "updates the traffic light" do
+        traffic_light.should_receive(:turn_on_single_light).with('Green')
+        update_monitor 'SucceededWithPassingTests'
       end
     end
 
