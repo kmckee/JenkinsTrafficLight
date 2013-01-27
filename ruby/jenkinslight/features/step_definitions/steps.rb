@@ -67,13 +67,24 @@ Given /^the build is currently Green$/ do
   update_monitor_using "SucceededWithPassingTests"
 end
 
+Given /^the build is currently Red$/ do
+  start_the_monitor
+  update_monitor_using "LastBuildFailed"
+end
+
 When /^I look at the traffic light$/ do
 
 end
 
-Then /^only the green light should be on$/ do
-  traffic_light.colors_turned_on.should include(:green)
+Then /^only the (.*) light should be on$/ do |color|
+  traffic_light.colors_turned_on.should include(color.downcase.to_sym)
 end
+
+Given /^the previous build was unhealthy and a build is in progress$/ do
+  start_the_monitor
+  update_monitor_using "BrokenAndBuilding"
+end
+
 
 def start_the_monitor
   @monitor = JenkinsLight::Monitor.new(output, traffic_light)

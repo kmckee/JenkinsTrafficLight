@@ -8,16 +8,13 @@ Feature: Traffic light updates based on status
     When I look at the traffic light
     Then only the green light should be on
 
-  @ignore
   Scenario: Display red for an unhealthy build
     Given the build is currently Red
     When I look at the traffic light
     Then only the red light should be on
 
-  @ignore
   Scenario: Display yellow when the build is unhealthy, but rebuilding
-    Given the previous build was unhealthy
-    And a build is currently in progress
+    Given the previous build was unhealthy and a build is in progress
     When I look at the traffic light
     Then only the yellow light should be on
 
