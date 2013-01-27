@@ -86,6 +86,15 @@ Given /^the previous build was unhealthy and a build is in progress$/ do
 end
 
 
+Given /^the build status is unknown$/ do
+  start_the_monitor
+  update_monitor_using "404NotFound"
+end
+
+Then /^all lights should be off$/ do
+  traffic_light.colors_turned_on.should include(:unknown)
+end
+
 def start_the_monitor
   @monitor = JenkinsLight::Monitor.new(output, traffic_light)
   @monitor.start
@@ -106,7 +115,7 @@ class Light
   def colors_turned_on
     @colors_turned_on ||= [] 
   end
-  def turn_on_single_light color
+  def update color
     colors_turned_on << color
   end
 end

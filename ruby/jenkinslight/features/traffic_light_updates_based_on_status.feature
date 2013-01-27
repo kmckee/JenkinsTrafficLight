@@ -18,7 +18,6 @@ Feature: Traffic light updates based on status
     When I look at the traffic light
     Then only the yellow light should be on
 
-  @ignore
   Scenario: Turn off all lights if the build status is unknown
     Given the build status is unknown
     When I look at the traffic light

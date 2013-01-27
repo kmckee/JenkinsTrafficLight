@@ -19,7 +19,7 @@ module JenkinsLight
       request_credentials if status_details[:code] == :auth
       
       write_status_message(status_details[:status], status_details[:details])
-      @traffic_light.turn_on_single_light(status_details[:status])      
+      @traffic_light.update(status_details[:status])      
     end
     
     def request_credentials
