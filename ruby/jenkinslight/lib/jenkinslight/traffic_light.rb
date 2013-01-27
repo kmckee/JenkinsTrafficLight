@@ -4,7 +4,12 @@ module JenkinsLight
       @port = port
     end
     def turn_on_single_light color
-      @port.write('167')
+      status_map = { 
+        :red => '167',
+        :yellow => '527',
+        :green => '563'
+      }  
+      @port.write(status_map[color])
     end
   end
 end
