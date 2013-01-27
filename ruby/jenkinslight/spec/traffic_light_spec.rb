@@ -8,7 +8,7 @@ module JenkinsLight
 
       it "writes '167' when passed red" do
         port.should_receive(:write).with("167")
-        subject.turn_on_single_light :red
+        subject.turn_on_single_light "Red"
       end
       it "writes '527' when passed yellow"
       it "writes '563' when passed green"

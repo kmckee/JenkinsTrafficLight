@@ -33,8 +33,8 @@ module JenkinsLight
     private
 
     def write_status_message(status, details)
-        time = Time.new.strftime("%H:%M:%S") 
-        @output.puts("#{time}/tBuild Status: #{status}/t#{details}")
+      time = Time.new.strftime("%H:%M:%S") 
+      @output.puts("#{time}/tBuild Status: #{status.capitalize}/t#{details}")
     end
 
     def jenkins_feed

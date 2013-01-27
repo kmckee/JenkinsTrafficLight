@@ -59,7 +59,7 @@ module JenkinsLight
       end
 
       it "updates the traffic light" do
-        traffic_light.should_receive(:turn_on_single_light).with('Green')
+        traffic_light.should_receive(:turn_on_single_light).with(:green)
         update_monitor 'SucceededWithPassingTests'
       end
     end

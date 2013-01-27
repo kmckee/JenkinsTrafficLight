@@ -72,7 +72,7 @@ When /^I look at the traffic light$/ do
 end
 
 Then /^only the green light should be on$/ do
-  traffic_light.colors_turned_on.should include("Green")
+  traffic_light.colors_turned_on.should include(:green)
 end
 
 def start_the_monitor

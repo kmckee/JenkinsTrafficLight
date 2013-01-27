@@ -17,14 +17,14 @@ module JenkinsLight
         status = 'error'
       end
 
-      { 'blue' => {:status => 'Green', :details => ''},
-        'red' => {:status => 'Red', :details => 'Build failed'},
-        'disabled' => {:status => 'Unknown', :details => 'Jenkins is suspended'},
-        'yellow' => {:status => 'Red', :details => 'Failing tests'},
-        'red_anime' => {:status => 'Yellow', :details => 'Broken and building...'},
-        'yellow_anime' => {:status => 'Yellow', :details => 'Test failure(s) on previous build, rebuilding...'},
-        'error' => {:status => 'Unknown', :details => 'Error contacting Jenkins (404)'},
-        'auth' => {:status => 'Unknown', :details => 'Authentication Required (403)', :code => :auth}
+      { 'blue' => {:status => :green, :details => ''},
+        'red' => {:status => :red, :details => 'Build failed'},
+        'disabled' => {:status => :unknown, :details => 'Jenkins is suspended'},
+        'yellow' => {:status => :red, :details => 'Failing tests'},
+        'red_anime' => {:status => :yellow, :details => 'Broken and building...'},
+        'yellow_anime' => {:status => :yellow, :details => 'Test failure(s) on previous build, rebuilding...'},
+        'error' => {:status => :unknown, :details => 'Error contacting Jenkins (404)'},
+        'auth' => {:status => :unknown, :details => 'Authentication Required (403)', :code => :auth}
       }[status]
     end
 
