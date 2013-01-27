@@ -19,7 +19,7 @@ module JenkinsLight
       end
       it "writes '567' when passed unknown" do
         port.should_receive(:write).with("567")
-        subject.turn_off_all_lights
+        subject.update :unknown
       end
     end
   end
