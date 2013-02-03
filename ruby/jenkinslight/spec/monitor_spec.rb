@@ -3,8 +3,9 @@ require_relative 'spec_helper'
 module JenkinsLight
   describe Monitor do
     let(:output) { double('output').as_null_object }
+    let(:input) { double('input').as_null_object }
     let(:traffic_light) { double('traffic_light').as_null_object }
-    let(:monitor) { Monitor.new(output, traffic_light) }
+    let(:monitor) { Monitor.new(output, input, traffic_light) }
    
     def update_monitor status
       VCR.use_cassette(status) do
@@ -53,7 +54,7 @@ module JenkinsLight
       end
       
       it "should get the url" do
-        output.stub(:gets).and_return('http://fakeurl.com')
+        input.stub(:gets).and_return('http://fakeurl.com')
         monitor.start
         monitor.url.should == 'http://fakeurl.com'
       end
@@ -66,13 +67,13 @@ module JenkinsLight
 
     describe "#request_credentials" do
       it "should get the username" do
-        output.stub(:gets).and_return('User', 'Password')
+        input.stub(:gets).and_return('User', 'Password')
         update_monitor 'Authentication'
         monitor.username.should == 'User'
       end
       
       it "should get the password" do
-        output.stub(:gets).and_return('User', 'Password')
+        input.stub(:gets).and_return('User', 'Password')
         update_monitor 'Authentication'
         monitor.password.should == 'Password'
       end

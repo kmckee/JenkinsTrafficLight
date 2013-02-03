@@ -96,7 +96,7 @@ Then /^all lights should be off$/ do
 end
 
 def start_the_monitor
-  @monitor = JenkinsLight::Monitor.new(output, traffic_light)
+  @monitor = JenkinsLight::Monitor.new(output, input, traffic_light)
   @monitor.start
 end
 
@@ -131,6 +131,13 @@ class Output
   def puts(message)
       messages << message
   end 
+end
+
+def input
+  @input ||= Input.new
+end
+
+class Input
   def gets
     ''
   end

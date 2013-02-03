@@ -3,15 +3,16 @@ module JenkinsLight
   class Monitor
     attr_accessor :url, :username, :password
     
-    def initialize output, traffic_light
+    def initialize output, input, traffic_light
       @output = output
+      @input = input
       @traffic_light = traffic_light
     end
 
     def start
       @output.puts "Jenkins Build Light Monitor Started"
       @output.puts "Enter the URL of the Jenkins job to monitor:"
-      @url = @output.gets
+      @url = @input.gets
     end
 
     def update
@@ -24,10 +25,10 @@ module JenkinsLight
     
     def request_credentials
       @output.puts 'Username:' 
-      @username = @output.gets
+      @username = @input.gets
 
       @output.puts 'Password:'
-      @password = @output.gets
+      @password = @input.gets
     end
 
     private
