@@ -13,7 +13,7 @@ module JenkinsLight
         status = JSON.parse(RestClient.get(api_url))['color']
       rescue RestClient::Forbidden 
         status = 'auth'
-      rescue
+      rescue 
         status = 'error'
       end
 
@@ -31,7 +31,7 @@ module JenkinsLight
     private
 
     def api_url
-      @url + "/api/json"
+      @url.strip + "/api/json"
     end
 
   end
