@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+require 'jenkinslight'
+require 'serialport'
+
+port = SerialPort.new "/dev/tty.usbserial-A9GNFDHP"
+app = JenkinsLight::Monitor.new(STDOUT, port)
+app.start
+

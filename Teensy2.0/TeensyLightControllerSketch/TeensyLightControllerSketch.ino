@@ -20,17 +20,63 @@ void setup() {
   Serial.begin(9600);
 }
 
+const int SLEEP_PER_CYCLE = 1000;
+const int NUMBER_OF_CYCLES_TO_KEEP_LIGHTS_ON = 5;
+int cyclesSinceLastCommandReceived = 0;
+int hasCommunicationBeenEstablished = 0;
+
 
 void loop() {
+  executeAllBufferedCommands();
+  delay(SLEEP_PER_CYCLE);
+  confirmCommunicationHasNotBeenLost();
+}
 
-    while(Serial.available()) {
-      byte incomingByte = Serial.read();
-      Serial.println(incomingByte);
-      updateLightColor(incomingByte);
+void confirmCommunicationHasNotBeenLost() {
+  if (cyclesSinceLastCommandReceived > NUMBER_OF_CYCLES_TO_KEEP_LIGHTS_ON) {
+    turnOffAllLights();
+    if (hasCommunicationBeenEstablished == 1) {
+      hasCommunicationBeenEstablished = 0;
+      warnAboutLossOfCommunication();
     }
-    
-    delay(1000);
+  }
+  else {
+    cyclesSinceLastCommandReceived++;
+  }
+}
 
+void turnOffAllLights() {
+  digitalWrite(redPin, OFF);
+  digitalWrite(yellowPin, OFF);
+  digitalWrite(greenPin, OFF);
+}
+
+void warnAboutLossOfCommunication() {
+  for (int i=0; i< 5; i++) {
+    delay(150);
+    digitalWrite(redPin, ON);
+    delay(150);
+    digitalWrite(yellowPin, ON);
+    delay(150);
+    digitalWrite(greenPin, ON);
+    delay(150);
+    digitalWrite(redPin, OFF);
+    delay(150);
+    digitalWrite(yellowPin, OFF);
+    delay(150);
+    digitalWrite(greenPin, OFF);
+  }
+}
+
+void executeAllBufferedCommands()
+{
+  while(Serial.available()) {
+    hasCommunicationBeenEstablished = 1;
+    byte incomingByte = Serial.read();
+    Serial.println(incomingByte);
+    updateLightColor(incomingByte);
+    cyclesSinceLastCommandReceived = 0;
+  }
 }
 
 void updateLightColor(byte command)
