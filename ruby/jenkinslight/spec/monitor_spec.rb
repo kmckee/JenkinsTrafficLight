@@ -59,6 +59,13 @@ module JenkinsLight
         monitor.url.should == 'http://fakeurl.com'
       end
 
+      it "should not get the url if it's already defined" do
+        input.stub(:readline).and_return('http://thisiswrong.com')
+        monitor.url = "http://right.com"
+        monitor.start
+        monitor.url.should == 'http://right.com'
+      end
+
       it "updates the traffic light" do
         traffic_light.should_receive(:update).with(:green)
         update_monitor 'SucceededWithPassingTests'

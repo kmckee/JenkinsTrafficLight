@@ -11,8 +11,10 @@ module JenkinsLight
 
     def start
       @output.puts "Jenkins Build Light Monitor Started"
-      @output.puts "Enter the URL of the Jenkins job to monitor:"
-      @url = @input.readline
+      if (@url.nil?)
+        @output.puts "Enter the URL of the Jenkins job to monitor:"
+        @url = @input.readline
+      end
     end
 
     def update
