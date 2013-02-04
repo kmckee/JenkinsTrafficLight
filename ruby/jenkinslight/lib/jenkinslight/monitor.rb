@@ -13,7 +13,7 @@ module JenkinsLight
       @output.puts "Jenkins Build Light Monitor Started"
       if (@url.nil?)
         @output.puts "Enter the URL of the Jenkins job to monitor:"
-        @url = @input.readline
+        @url = @input.readline.chomp
       end
     end
 
@@ -27,10 +27,10 @@ module JenkinsLight
     
     def request_credentials
       @output.puts 'Username:' 
-      @username = @input.readline
+      @username = @input.readline.chomp
 
       @output.puts 'Password:'
-      @password = @input.readline
+      @password = @input.readline.chomp
     end
 
     private
