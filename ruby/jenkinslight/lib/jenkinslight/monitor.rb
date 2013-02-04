@@ -12,7 +12,7 @@ module JenkinsLight
     def start
       @output.puts "Jenkins Build Light Monitor Started"
       @output.puts "Enter the URL of the Jenkins job to monitor:"
-      @url = @input.gets
+      @url = @input.readline
     end
 
     def update
@@ -25,17 +25,17 @@ module JenkinsLight
     
     def request_credentials
       @output.puts 'Username:' 
-      @username = @input.gets
+      @username = @input.readline
 
       @output.puts 'Password:'
-      @password = @input.gets
+      @password = @input.readline
     end
 
     private
 
     def write_status_message(status, details)
       time = Time.new.strftime("%H:%M:%S") 
-      @output.puts("#{time}/tBuild Status: #{status.capitalize}/t#{details}")
+      @output.puts("#{time}\tBuild Status: #{status.capitalize}\t#{details}")
     end
 
     def jenkins_feed

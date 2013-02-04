@@ -34,7 +34,7 @@ module JenkinsLight
 
     describe "#update" do
       it "outputs a status message based on build status" do
-        output.should_receive(:puts).with(/[0-9]+:[0-9]+(:[0-9]+)?\/tBuild Status: Green/)
+        output.should_receive(:puts).with(/[0-9]+:[0-9]+(:[0-9]+)?\tBuild Status: Green/)
         update_monitor 'SucceededWithPassingTests' 
       end
       
@@ -54,7 +54,7 @@ module JenkinsLight
       end
       
       it "should get the url" do
-        input.stub(:gets).and_return('http://fakeurl.com')
+        input.stub(:readline).and_return('http://fakeurl.com')
         monitor.start
         monitor.url.should == 'http://fakeurl.com'
       end
@@ -67,13 +67,13 @@ module JenkinsLight
 
     describe "#request_credentials" do
       it "should get the username" do
-        input.stub(:gets).and_return('User', 'Password')
+        input.stub(:readline).and_return('User', 'Password')
         update_monitor 'Authentication'
         monitor.username.should == 'User'
       end
       
       it "should get the password" do
-        input.stub(:gets).and_return('User', 'Password')
+        input.stub(:readline).and_return('User', 'Password')
         update_monitor 'Authentication'
         monitor.password.should == 'Password'
       end
