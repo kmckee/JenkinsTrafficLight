@@ -11,6 +11,6 @@ namespace JTL.Core
         Red,
         Yellow,
         Green,
-        All
+        All     broken build !
     }
 }
