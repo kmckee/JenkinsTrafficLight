@@ -21,6 +21,7 @@ module JenkinsLight
         'red' => {:status => :red, :details => 'Build failed'},
         'disabled' => {:status => :unknown, :details => 'Jenkins is suspended'},
         'yellow' => {:status => :red, :details => 'Failing tests'},
+        'blue_anime' => {:status => :green, :details => ''},
         'red_anime' => {:status => :yellow, :details => 'Broken and building...'},
         'yellow_anime' => {:status => :yellow, :details => 'Test failure(s) on previous build, rebuilding...'},
         'error' => {:status => :unknown, :details => 'Error contacting Jenkins (404)'},
