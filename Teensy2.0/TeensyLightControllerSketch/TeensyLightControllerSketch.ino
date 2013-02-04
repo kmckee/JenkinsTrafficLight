@@ -21,15 +21,25 @@ void setup() {
 }
 
 const int SLEEP_PER_CYCLE = 1000;
-const int NUMBER_OF_CYCLES_TO_KEEP_LIGHTS_ON = 5;
+const int NUMBER_OF_CYCLES_TO_KEEP_LIGHTS_ON = 60;
 int cyclesSinceLastCommandReceived = 0;
 int hasCommunicationBeenEstablished = 0;
-
+int isFirstLoop = 1;
 
 void loop() {
+  if (isFirstLoop == 1){
+    warmUpLights();
+    isFirstLoop = 0;
+  }
   executeAllBufferedCommands();
   delay(SLEEP_PER_CYCLE);
   confirmCommunicationHasNotBeenLost();
+}
+
+void warmUpLights() {
+  turnOnAllLights();
+  delay(1000);
+  turnOffAllLights();
 }
 
 void confirmCommunicationHasNotBeenLost() {
@@ -49,6 +59,11 @@ void turnOffAllLights() {
   digitalWrite(redPin, OFF);
   digitalWrite(yellowPin, OFF);
   digitalWrite(greenPin, OFF);
+}
+void turnOnAllLights() {
+  digitalWrite(redPin, ON);
+  digitalWrite(yellowPin, ON);
+  digitalWrite(greenPin, ON);
 }
 
 void warnAboutLossOfCommunication() {
