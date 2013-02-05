@@ -46,6 +46,12 @@ module JenkinsLight
         feed = JenkinsFeed.new "http://fakeurl.com/"
         feed.api_url.should == "http://fakeurl.com/api/json"
       end
+      it "includes username and password if specified" do
+        feed = JenkinsFeed.new "http://fakeurl.com"
+        feed.username = "kyle"
+        feed.password = "password"
+        feed.api_url.should == "http://kyle:password@fakeurl.com/api/json"
+      end
     end
 
     def get_status cassette_name

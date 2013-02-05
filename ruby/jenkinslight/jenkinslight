@@ -7,6 +7,7 @@ port = SerialPort.new "/dev/tty.usbserial-A9GNFDHP"
 trafficLight = JenkinsLight::TrafficLight.new port
 app = JenkinsLight::Monitor.new(STDOUT, STDIN, trafficLight)
 app.url = "https://builds.apache.org/job/ActiveMQ"
+
 app.start
 
 until false do

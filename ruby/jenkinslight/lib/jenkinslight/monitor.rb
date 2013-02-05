@@ -28,9 +28,11 @@ module JenkinsLight
     def request_credentials
       @output.puts 'Username:' 
       @username = @input.readline.chomp
+      jenkins_feed.username = @username
 
       @output.puts 'Password:'
       @password = @input.readline.chomp
+      jenkins_feed.password = @password
     end
 
     private

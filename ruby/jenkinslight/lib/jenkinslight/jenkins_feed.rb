@@ -3,7 +3,7 @@ require 'restclient'
 
 module JenkinsLight
   class JenkinsFeed
-    attr_accessor :url
+    attr_accessor :url, :username, :password
     def initialize url
       @url = url
     end
@@ -32,7 +32,13 @@ module JenkinsLight
     def api_url
       temp = @url.strip
       temp << "/" unless temp.end_with?("/")
-      temp + "api/json"
+      temp = temp + "api/json"
+
+      if (username.nil? == false)
+        temp = temp.sub("://", "://#{username}:#{password}@")
+      end
+
+      temp
     end
 
   end
