@@ -29,10 +29,10 @@ module JenkinsLight
       }[status]
     end
 
-    private
-
     def api_url
-      @url.strip + "/api/json"
+      temp = @url.strip
+      temp << "/" unless temp.end_with?("/")
+      temp + "api/json"
     end
 
   end

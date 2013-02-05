@@ -37,6 +37,17 @@ module JenkinsLight
       end
     end
 
+    describe "#api_url" do
+      it "is the url plus /api/json" do
+        feed = JenkinsFeed.new "http://fakeurl.com"
+        feed.api_url.should == "http://fakeurl.com/api/json"
+      end
+      it "doesn't double up on backslashes if the url ends with a backslash" do
+        feed = JenkinsFeed.new "http://fakeurl.com/"
+        feed.api_url.should == "http://fakeurl.com/api/json"
+      end
+    end
+
     def get_status cassette_name
       VCR.use_cassette(cassette_name) do
         feed = JenkinsFeed.new "http://fakeurl.com/job/#{cassette_name}"
