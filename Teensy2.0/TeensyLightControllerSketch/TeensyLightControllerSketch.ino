@@ -1,6 +1,6 @@
-const int redPin = 7;
-const int yellowPin = 6;
-const int greenPin = 5;
+const int redPin = 0;
+const int yellowPin = 1;
+const int greenPin = 2;
 
 const int ON = LOW;
 const int OFF = HIGH;
