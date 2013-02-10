@@ -3,10 +3,10 @@ $LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
 require 'jenkinslight'
 require 'serialport'
 
-port = SerialPort.new "/dev/tty.usbserial-A9GNFDHP"
+port = SerialPort.new "COM4" #"/dev/tty.usbserial-A9GNFDHP"
 trafficLight = JenkinsLight::TrafficLight.new port
 app = JenkinsLight::Monitor.new(STDOUT, STDIN, trafficLight)
-app.url = "https://builds.apache.org/job/ActiveMQ"
+app.url = "https://builds.apache.org/job/Accumulo-Trunk"
 
 app.start
 
