@@ -1,6 +1,7 @@
-const int redPin = 0;
-const int yellowPin = 1;
-const int greenPin = 2;
+const int redPin = 7;
+const int yellowPin = 6;
+const int greenPin = 5;
+const int fanPin = 3;
 
 const int ON = LOW;
 const int OFF = HIGH;
@@ -27,7 +28,10 @@ int hasCommunicationBeenEstablished = 0;
 int isFirstLoop = 1;
 
 void loop() {
+  
+  
   if (isFirstLoop == 1){
+    analogWrite(fanPin, 255);
     warmUpLights();
     isFirstLoop = 0;
   }
