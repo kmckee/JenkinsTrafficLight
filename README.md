@@ -1,3 +1,6 @@
+---
+test: true
+---
 JenkinsTrafficLight
 ===================
 
